@@ -1,5 +1,6 @@
 import Constants.ROLES;
 import Model.Person;
+import Service.GenerateQuestion;
 import Service.QuizManager;
 
 import java.util.Scanner;
@@ -20,6 +21,25 @@ public class Main {
 
         Person person = new Person(age, name, role.equalsIgnoreCase("admin")? ADMIN: CONTESTANT);
         QuizManager quizManager = new QuizManager(person);
-        quizManager.takeQuiz();
+        System.out.println(person);
+        if (person.getUserRole().name().equalsIgnoreCase("ADMIN")){
+            String userInput = "";
+            while (!userInput.equals("exit")){
+                System.out.println("Your options: \n 1. Add Questions \n 2. Take quiz ");
+                int option = scanner.nextInt();
+                switch (option){
+                    case 1:
+                        GenerateQuestion.addQuestions();
+                        break;
+                    case 2:
+                        quizManager.takeQuiz();
+                        break;
+                }
+                System.out.println("Enter 'exit' to exit the menu");
+                userInput = scanner.next();
+            }
+        }else{
+            quizManager.takeQuiz();
+        }
     }
 }

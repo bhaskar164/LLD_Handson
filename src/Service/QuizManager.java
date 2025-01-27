@@ -33,6 +33,7 @@ public class QuizManager {
             });
             System.out.println("Your score is "+ this.score);
     }
+
     public void setPerson(Person person) {
         this.person = person;
     }
