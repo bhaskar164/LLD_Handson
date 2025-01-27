@@ -21,20 +21,17 @@ public class QuizManager {
     }
 
     public void takeQuiz(){
-        while(true){
             Scanner scanner = new Scanner(System.in);
             this.questions.forEach(question -> {
                 System.out.println(question.getQuestionDescription());
-                System.out.println("1." + question.getOptions().get(0));
-                System.out.println("2." + question.getOptions().get(1));
-                System.out.println("3." +question.getOptions().get(2));
-                System.out.println("4." +question.getOptions().get(3));
+                System.out.println("1. " + question.getOptions().get(0));
+                System.out.println("2. " + question.getOptions().get(1));
+                System.out.println("3. " + question.getOptions().get(2));
+                System.out.println("4. " + question.getOptions().get(3));
                 int option  = scanner.nextInt();
                 if(option == question.getCorrectOption()) this.score++;
             });
             System.out.println("Your score is "+ this.score);
-            break;
-        }
     }
     public void setPerson(Person person) {
         this.person = person;
